@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 
 namespace MvcPracticumAutoverzekering.Models
 {
@@ -16,6 +17,20 @@ namespace MvcPracticumAutoverzekering.Models
             // Add custom user claims here
             return userIdentity;
         }
+        [Required]
+        [Display(Name = "Kenteken")]
+        public string LicensePlate { get; set; }
+
+        [Required]
+        [Display(Name = "Voornaam")]
+        public string Firstname { get; set; }
+
+        [Display(Name = "Tussenvoegsel")]
+        public string Prefix { get; set; }
+
+        [Required]
+        [Display(Name = "Achternaam")]
+        public string Surname { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +44,9 @@ namespace MvcPracticumAutoverzekering.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<MvcPracticumAutoverzekering.Models.Claim> Claims { get; set; }
+
+        //public System.Data.Entity.DbSet<MvcPracticumAutoverzekering.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

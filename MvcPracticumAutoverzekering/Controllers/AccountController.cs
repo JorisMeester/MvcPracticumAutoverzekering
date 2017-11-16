@@ -151,7 +151,7 @@ namespace MvcPracticumAutoverzekering.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, LicensePlate = model.LicensePlate, Firstname = model.Firstname, Prefix = model.Prefix, Surname = model.Surname };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
